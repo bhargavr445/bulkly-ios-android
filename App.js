@@ -1,31 +1,63 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
-import AboutUs from './components/About-us';
-import Contact from './components/Contact';
-import Home from './components/Home';
+import IconButton from './Components/IconButton';
+import AboutUs from './Screens/About-Us/About-us';
+import BankingOverview from './Screens/Bank';
+import Contact from './Screens/Contact';
+import Home from './Screens/Home';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
+
   return (
     <>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerTintColor: 'white', headerStyle: { backgroundColor: 'red' } }}>
-          <Stack.Screen name='Home' component={Home} options={{ title: 'Home' }}></Stack.Screen>
-          <Stack.Screen name='About' component={AboutUs} options={{ title: 'About Us' }}></Stack.Screen>
+      <StatusBar style="light" edges={['top']} />
+      <NavigationContainer >
+        <Tab.Navigator
+          screenOptions={{
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: '#0d70adff' },
+            tabBarActiveTintColor: '#0d70adff',
+            headerBackButtonDisplayMode: 'generic'
+          }}>
+          <Tab.Screen
+            name='Home'
+            component={Home}
+            options={{
+              title: 'Home',
+              tabBarIcon: (routeOptions) => <IconButton iconName="home" size={24} color={routeOptions.color} />
+            }}>
+          </Tab.Screen>
+          <Tab.Screen
+            name='About'
+            component={AboutUs}
+            options={{
+              title: 'About Bullkly',
+              tabBarIcon: (routeOptions) => <IconButton iconName="albums-outline" size={24} color={routeOptions.color} />
+            }}>
+
+          </Tab.Screen>
           {/* passing dynamic data through options within title */}
-          <Stack.Screen
+          <Tab.Screen
             name='Contact'
             component={Contact}
-            options={(navOptions) => {
-              const id = navOptions.route.params.cId;
-              return { title: id }
+            options={{
+              tabBarIcon: (routeOptions) => <IconButton iconName="people-outline" size={24} color={routeOptions.color} />
             }}>
-          </Stack.Screen>
-        </Stack.Navigator>
+          </Tab.Screen>
+
+          <Tab.Screen
+            name='Banking'
+            component={BankingOverview}
+            options={{
+              tabBarIcon: (routeOptions) => <IconButton iconName="people-outline" size={24} color={routeOptions.color} />
+            }}>
+          </Tab.Screen>
+
+        </Tab.Navigator>
       </NavigationContainer>
     </>
 
@@ -39,4 +71,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  safe: {
+    flex: 1,
+    backgroundColor: 'grey',
+  }
 });
