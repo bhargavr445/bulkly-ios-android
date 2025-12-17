@@ -1,14 +1,8 @@
-import LiveProductsSection from './Products/Products';
+import ProductsStack from "./Products/ProductStack";
 
-export default function Home({ navigation }) {
-
-    function navigateTo(path, id) {
-        navigation.navigate(path, { cId: id });
-    }
+export default function Home() {
 
     return (
-        <>
-            <LiveProductsSection />
-        </>
+        <ProductsStack />
     );
 }
