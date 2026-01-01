@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import { Text, ScrollView, View, StyleSheet } from "react-native";
+import ContactForm from './Contact-Form';
 
 export default function Contact() {
 
@@ -11,6 +12,16 @@ export default function Contact() {
       <View style={styles.headerBand}>
         <Text style={styles.mainTitle}>Have questions? We're here to help!</Text>
       </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>Send us a message</Text>
+        <Text style={styles.formSubtitle}>
+          Fill out the form below and we'll get back to you within 24 hours
+        </Text>
+        <ContactForm />
+      </View>
+      
+      
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Get in Touch</Text>
 
@@ -90,6 +101,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     // alignItems: "center",
   },
+
   headerBand: {
     backgroundColor: "#EAF6FF",
     paddingTop: 26,
@@ -102,10 +114,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#0F172A",
     textAlign: "center",
-  },
-  container: {
-    // paddingVertical: 18,
-    // gap: 16,
   },
 
   card: {
@@ -194,5 +202,42 @@ const styles = StyleSheet.create({
     color: "#334155",
     // fontWeight: "400",
   },
+  formTitle: {
+    fontSize: 24,
+    fontWeight: "800",
+    color: "#0F172A",
+    marginBottom: 6,
+  },
+
+  formSubtitle: {
+    fontSize: 15,
+    color: "#64748B",
+    lineHeight: 22,
+    marginBottom: 20,
+  },
+
+  field: {
+    marginBottom: 18,
+  },
+
+  label: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#0F172A",
+    marginBottom: 8,
+  },
+
+  input: {
+    height: 52,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#D7E2F0",
+    backgroundColor: "#F8FAFC",
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: "#0F172A",
+  },
+
+
 });
 

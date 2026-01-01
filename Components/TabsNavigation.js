@@ -1,10 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AboutUs from '../Screens/About-Us/About-us';
 import BankingOverview from '../Screens/Bank';
-import Contact from '../Screens/Contact';
 import Home from '../Screens/Home';
 import IconButton from './IconButton';
-import AboutUs from '../Screens/About-Us/About-us';
-
+import Contact from '../Screens/Contact/Contact';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,10 +14,9 @@ export default function TabsNavigation() {
             headerTintColor: 'white',
             headerStyle: { backgroundColor: '#0d70adff' },
             tabBarActiveTintColor: '#0d70adff',
-            headerBackButtonDisplayMode: 'generic',
-            headerShown: false
-
+            headerBackButtonDisplayMode: 'generic'
           }}>
+
           <Tab.Screen
             name='Home'
             component={Home}
@@ -26,12 +24,12 @@ export default function TabsNavigation() {
               tabPress: () => navigation.navigate("Home", { screen: "Products" }),
             })}
             options={{
-              title: 'Home',
-              headerShown: false,
-              headerSearchBarOptions: {placeholder: 'app here'},
+              title: 'All Products',
+              tabBarLabel: 'Home',
               tabBarIcon: (routeOptions) => <IconButton iconName="home" size={24} color={routeOptions.color} />
             }}>
           </Tab.Screen>
+          
           <Tab.Screen
             name='About'
             component={AboutUs}

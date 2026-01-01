@@ -1,8 +1,8 @@
-import ProductsStack from "./Products/ProductStack";
+import LiveProductsSection from "./Products/Products";
 
 export default function Home() {
 
     return (
-        <ProductsStack />
+        <LiveProductsSection />
     );
 }

@@ -59,10 +59,7 @@ export default function LiveProductsSection() {
                         liveProductsList.push(product);
                     }
                 });
-                setLiveProducts({
-                    liveProductsList,
-                    comingSoonProductsList
-                });
+                setLiveProducts({ liveProductsList, comingSoonProductsList });
             } catch (error) {
                 setIsLoading(false);
             }
@@ -121,7 +118,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#e5e6e7ff",
     },
     header: {
-        marginBottom: 14,
+        marginBottom: 14
     },
     h1: {
         fontSize: 18,
