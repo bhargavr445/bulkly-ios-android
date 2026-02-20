@@ -4,3 +4,7 @@
 #  "react-native-safe-area-context": "~5.6.0",
 #  "react-native-screens": "~4.16.0"
 # stack
+
+bottom-nav
+stack-nav
+drawer-nav 
