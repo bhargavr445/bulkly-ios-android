@@ -8,6 +8,10 @@ import {
 } from "react-native";
 import ProductCard from "./ProductCard";
 import { isAfter } from "date-fns";
+import axiosInstance from "../../interceptors/req-interceptor"; 
+import TrustSection from "./Trust/Trust";
+import BulklySlider from "../../Components/BulklySlider";
+import HowBulklyWorksSection from "./HowBulklyWorksSection";
 
 const liveProductsMetaData = {
     header: 'Live Products',
@@ -47,8 +51,9 @@ export default function LiveProductsSection() {
         async function fetchLiveProducts() {
             setIsLoading(true);
             try {
-                const response = await fetch('https://bulkbuy-rumt.onrender.com/product/allProducts');
-                const data = await response.json();
+                const response = await axiosInstance.get('product/allProducts');                
+                const data = await response.data;
+                
                 setIsLoading(false);
                 const liveProductsList = [];
                 const comingSoonProductsList = [];
@@ -61,6 +66,8 @@ export default function LiveProductsSection() {
                 });
                 setLiveProducts({ liveProductsList, comingSoonProductsList });
             } catch (error) {
+                console.log(error);
+                
                 setIsLoading(false);
             }
         }
@@ -82,6 +89,7 @@ export default function LiveProductsSection() {
 
     return (
         <ScrollView>
+            <TrustSection />
             <FlatList
                 scrollEnabled={false}
                 data={liveProducts?.liveProductsList}
@@ -104,6 +112,7 @@ export default function LiveProductsSection() {
                 onScrollEndDrag={endScrollingDrag}
                 onScrollTop={topScrollingDrag}
             />
+            <HowBulklyWorksSection></HowBulklyWorksSection>
         </ScrollView>
     );
 }
@@ -115,7 +124,7 @@ const styles = StyleSheet.create({
     page: {
         paddingVertical: 18,
         paddingHorizontal: 14,
-        backgroundColor: "#e5e6e7ff",
+        backgroundColor: "#EEF7FF",
     },
     header: {
         marginBottom: 14

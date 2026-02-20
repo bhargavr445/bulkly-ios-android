@@ -52,7 +52,7 @@ export default function TabsNavigation() {
             name='Banking'
             component={BankingOverview}
             options={{
-              tabBarIcon: (routeOptions) => <IconButton iconName="people-outline" size={24} color={routeOptions.color} />
+              tabBarIcon: (routeOptions) => <IconButton iconName="options-outline" size={24} color={routeOptions.color} />
             }}>
           </Tab.Screen>
 
